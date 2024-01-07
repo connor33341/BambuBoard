@@ -1,0 +1,8 @@
+{
+    "HttpPort" : 8080,
+    "PrinterUrl": "10.0.0.1",
+    "PrinterPort": "8883",
+    "PrinterSN": "",
+    "PrinterAccessCode": "",
+    "ConsoleLogging": false
+}

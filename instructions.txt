@@ -1,0 +1,16 @@
+How to setup:
+    Step 1:
+        Change directory to BambuBoard
+        cd BambuBoard
+        Open config.json
+        sudo nano config.json
+    Step 2:
+        Enter prtiner ip, found in network settings in printer
+        Leave default port for printer
+        Set printer Access Key
+        Set printer Serial Number, found in printer settings
+    Step 3:
+        Ctrl+O (Save)
+        Ctrl+X (Close)
+        Run Server:
+        python main.py
