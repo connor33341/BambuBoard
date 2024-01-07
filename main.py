@@ -23,7 +23,10 @@ NodeStartCMD = ReaderData["NodeStartCMD"]
 if __name__ == "__main__":
     log("[INFO]: Server Starting")
     UpdateClass = UpdateSystem(AutoUpdate)
-    UpdateClass.CFU()
-    UpdateClass.BWD()
+    try:
+        UpdateClass.CFU()
+        UpdateClass.BWD()
+    except (Exception) as Error:
+        print("[ERROR]: "+Error)
     os.chdir("web")
     os.system(NodeStartCMD)
