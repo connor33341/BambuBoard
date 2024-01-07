@@ -4,5 +4,7 @@
     "PrinterPort": "8883",
     "PrinterSN": "",
     "PrinterAccessCode": "",
-    "ConsoleLogging": false
+    "ConsoleLogging": false,
+    "AutoUpdate": true,
+    "NodeStartCMD": "node main.js"
 }
