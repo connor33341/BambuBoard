@@ -1,9 +1,9 @@
-from jsonRW import JsonReader
+#from jsonRW import JsonReader
 
-ReaderClass = JsonReader("config.json")
-ReaderData = ReaderClass.Read()
+#ReaderClass = JsonReader("config.json")
+#ReaderData = ReaderClass.Read()
 
-ConsoleLogging = ReaderData["ConsoleLogging"]
+ConsoleLogging = True#ReaderData["ConsoleLogging"]
 
 def log(Text):
     if ConsoleLogging:
