@@ -49,7 +49,10 @@ class UpdateSystem:
             else:
                 log("[REPO]: Enable AutoUpdate in config.json to update")
     def BWD(self):
-        os.remove("web")
+        try:
+            os.remove("web")
+        except Exception as e:
+            print("[WARN]: Dir /web does not exist")
         os.system("git clone https://github.com/t0nyz/BambuBoard.git")
         os.rename("BambuLab","web")
         JsonControler = JsonReader("config.json")
