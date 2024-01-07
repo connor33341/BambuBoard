@@ -4,5 +4,6 @@
     "RepoPath": "/connor33341/BambuBoard/",
     "VersionFile": "version.txt",
     "CacheName": "autoUpdateCache.json",
-    "Branch": "main/"
+    "Branch": "main/",
+    "UpdateFile":"asyncupdate.py"
 }

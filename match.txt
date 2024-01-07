@@ -1,0 +1,6 @@
+httpPort
+printerURL
+printerPort
+printerSN
+printerAccessCode
+consoleLogging

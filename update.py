@@ -1,7 +1,11 @@
 import threading
 import http.client
-from jsonRW import *
+from jsonRW import JsonReader,json
 from log import log
+from cache import WriteCache
+import os
+import shutil
+import subprocess
 
 class UpdateSystem:
     def __init__(self,AutoUpdate):
@@ -14,6 +18,7 @@ class UpdateSystem:
         self.CacheName = JsonData["CacheName"]
         self.RawHost = JsonData["RawHost"]
         self.Branch = JsonData["Branch"]
+        self.UpdateFile = JsonData["UpdateFile"]
     def CFU(self):
         Version = 0
         with open(self.VersionFile,"r") as VersionFile:
@@ -29,8 +34,37 @@ class UpdateSystem:
             log("[REPO]: Outdated Version")
             if (self.AutoUpdate):
                 log("[REPO]: Updating")
+                CacheControler = WriteCache("updateCache.json","/cache/")
+                CacheControler.Write("")
+                CurrentDir = os.getcwd()
+                JsonControler1 = JsonReader("config.json")
+                JsonControler2 = JsonReader(CurrentDir+"/cache/updateCache.json")
+                JsonControler2.Write(JsonControler1.Read())
+                ParentDir = os.path.dirname(CurrentDir)
+                ActiveHeader = "ACTIVE_"
+                shutil.copy(os.path.join(CurrentDir,self.UpdateFile),os.path.join(CurrentDir,ActiveHeader+self.UpdateFile))
+                shutil.move(os.path.join(CurrentDir,ActiveHeader+self.UpdateFile),os.path.join(ParentDir,ActiveHeader+self.UpdateFile))
+                os.chdir(ParentDir)
+                subprocess.run(["python",ActiveHeader+self.UpdateFile])
             else:
                 log("[REPO]: Enable AutoUpdate in config.json to update")
-
-c = UpdateSystem(True)
-c.CFU()     
+    def BWD(self):
+        os.remove("web")
+        os.system("git clone https://github.com/t0nyz/BambuBoard.git")
+        os.rename("BambuLab","web")
+        JsonControler = JsonReader("config.json")
+        JsonData = JsonControler.Read()
+        with open("match.txt","r") as File:
+            MatchLines = File.readlines()
+        with open("/web/bambuConnection.js","r+") as File:
+            Lines = File.readlines()
+            for i in range(len(Lines)):
+                for KeyWord in MatchLines:
+                    if Lines[i].find(KeyWord):
+                        ValueData = json.dumps(JsonData)
+                        ValueData.lower()
+                        ValueData = json.loads(ValueData)
+                        Value = ValueData[KeyWord.lower()]
+                        Lines[i] = "const "+KeyWord+" = "+Value+";"
+            File.writelines(Lines)
+                

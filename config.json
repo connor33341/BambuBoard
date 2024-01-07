@@ -6,5 +6,5 @@
     "PrinterAccessCode": "",
     "ConsoleLogging": true,
     "AutoUpdate": true,
-    "NodeStartCMD": "node main.js"
+    "NodeStartCMD": "node bambuConnection.js"
 }
