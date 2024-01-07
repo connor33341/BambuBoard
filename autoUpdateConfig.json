@@ -1,6 +1,8 @@
 {
     "Host": "github.com",
+    "RawHost": "raw.githubusercontent.com",
     "RepoPath": "/connor33341/BambuBoard/",
     "VersionFile": "version.txt",
-    "CacheName": "autoUpdateCache.json"
+    "CacheName": "autoUpdateCache.json",
+    "Branch": "main/"
 }
