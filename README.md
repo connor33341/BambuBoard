@@ -1,4 +1,5 @@
 # BambuBoard
+## This fork is broken as of 4/5/24, the lead dev has changed from manual editing vars in the program to a config.json. This breaks the auto updater.
 Bambu Dashboard for viewing real time data from the Bambu X1 Carbon 3D printer. 
 
 # Demonstration Videos:
